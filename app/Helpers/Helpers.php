@@ -26,6 +26,7 @@ class Helpers
             'templateTitle' => '',
             'defaultLanguage'=>'en',
             'largeScreenLogo' => 'images/logo/materialize-logo-color.png',
+            // 'largeScreenLogo' => 'images/logo/materialize-logo-color.png',
             'smallScreenLogo' => 'images/logo/materialize-logo.png',
             'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
         ];
