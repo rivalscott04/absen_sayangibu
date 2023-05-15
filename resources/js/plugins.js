@@ -5,6 +5,7 @@
   Author URL: https://themeforest.net/user/pixinvent/portfolio
 ================================================================================*/
 
+
 // Globally variables
 var sidenavMain = $(".sidenav-main"),
    contentOverlay = $(".content-overlay"),

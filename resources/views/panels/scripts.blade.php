@@ -5,6 +5,7 @@
 @yield('vendor-script')
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN THEME  JS-->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset('js/plugins.js')}}"></script>
 <script src="{{asset('js/search.js')}}"></script>
 <script src="{{asset('js/custom/custom-script.js')}}"></script>

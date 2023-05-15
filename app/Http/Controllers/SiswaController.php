@@ -10,14 +10,27 @@ use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Siswa::get();
-        return response()->json([
-            'status' => 'success',
-            'message' => 'List of Siswa',
-            'data' => $data
-        ], 200);
+        $data = Siswa::all();
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'List of Siswa',
+        //     'data' => $data
+        // ], 200);
+        // if ($request->ajax()) {
+        //     $data = Siswa::latest()->get();
+        //     return DataTables::of($data)
+        //             ->addIndexColumn()
+        //             ->addColumn('action', function($row){
+        //                 $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm" data-id="'.$row->id.'">Edit</a>';
+        //                 $btn .= '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="delete btn btn-danger btn-sm" data-id="'.$row->id.'">Delete</a>';
+        //                 return $btn;
+        //             })
+        //             ->rawColumns(['action'])
+        //             ->make(true);
+        // }
+        return view('pages.attendance.siswa', compact('data'));
     }
 
     public function get($id)
@@ -66,7 +79,7 @@ class SiswaController extends Controller
             "kode" => "required",
             "kartu" => "required",
             // "foto" => "required",
-            'foto' => 'mimes:jpg,jpeg,png|max:2048',
+            'foto' => "required|mimes:jpg,jpeg,png|max:2048",
         ]);
 
         if ($validator->fails()) {
@@ -94,11 +107,12 @@ class SiswaController extends Controller
 
         $data->save();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'New Siswa Created',
-            'data' => $data
-        ], 201);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'message' => 'New Siswa Created',
+        //     'data' => $data
+        // ], 200);
+        return redirect()->route('siswa.index')->with('success', 'Data Berhasil ditambah');
     }
 
     public function update(Request $request, $id)

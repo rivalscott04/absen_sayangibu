@@ -35,6 +35,8 @@ License: You must have a valid license purchased only from themeforest(the above
   <link rel="apple-touch-icon" href="../../images/favicon/apple-touch-icon-152x152.png">
   <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon/favicon-32x32.png">
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   {{-- Include core + vendor Styles --}}
   @include('panels.styles')
 
