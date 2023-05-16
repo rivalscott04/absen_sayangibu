@@ -16,7 +16,7 @@
       "slug": "",
       "submenu": [
         {
-          "url": "api/siswa",
+          "url": "siswa",
           "name": "Siswa",
           "i18n": "Siswa",
           "slug": ""

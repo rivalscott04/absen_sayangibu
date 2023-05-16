@@ -13,7 +13,6 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         $data = Siswa::all();
-
         return view('pages.attendance.siswa', compact('data'));
     }
 
