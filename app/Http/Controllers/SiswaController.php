@@ -13,23 +13,7 @@ class SiswaController extends Controller
     public function index(Request $request)
     {
         $data = Siswa::all();
-        // return response()->json([
-        //     'status' => 'success',
-        //     'message' => 'List of Siswa',
-        //     'data' => $data
-        // ], 200);
-        // if ($request->ajax()) {
-        //     $data = Siswa::latest()->get();
-        //     return DataTables::of($data)
-        //             ->addIndexColumn()
-        //             ->addColumn('action', function($row){
-        //                 $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm" data-id="'.$row->id.'">Edit</a>';
-        //                 $btn .= '&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="delete btn btn-danger btn-sm" data-id="'.$row->id.'">Delete</a>';
-        //                 return $btn;
-        //             })
-        //             ->rawColumns(['action'])
-        //             ->make(true);
-        // }
+
         return view('pages.attendance.siswa', compact('data'));
     }
 

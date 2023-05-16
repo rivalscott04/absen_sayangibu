@@ -2,14 +2,14 @@
   <nav
     class="{{$configData['navbarMainClass']}} @if($configData['isNavbarDark']=== true) {{'navbar-dark'}} @elseif($configData['isNavbarDark']=== false) {{'navbar-light'}} @elseif(!empty($configData['navbarBgColor'])) {{$configData['navbarBgColor']}} @else {{$configData['navbarMainColor']}} @endif">
     <div class="nav-wrapper">
-      <div class="header-search-wrapper hide-on-med-and-down">
+      <!-- <div class="header-search-wrapper hide-on-med-and-down">
         <i class="material-icons">search</i>
         <input class="header-search-input z-depth-2" type="text" name="Search" placeholder="Explore Materialize"
           data-search="starter-kit-list">
         <ul class="search-list collection display-none"></ul>
-      </div>
+      </div> -->
       <ul class="navbar-list right">
-        <li class="dropdown-language">
+        <!-- <li class="dropdown-language">
           <a class="waves-effect waves-block waves-light translation-button" href="#"
             data-target="translation-dropdown">
             <span class="flag-icon flag-icon-gb"></span>
@@ -31,7 +31,7 @@
             <i class="material-icons">notifications_none<small class="notification-badge">5</small></i>
           </a>
         </li>
-        <li>
+        <li> -->
           <a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);"
             data-target="profile-dropdown">
             <span class="avatar-status avatar-online">
@@ -39,11 +39,11 @@
             </span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right">
             <i class="material-icons">format_indent_increase</i>
           </a>
-        </li>
+        </li> -->
       </ul>
       <!-- translation-button-->
       <ul class="dropdown-content" id="translation-dropdown">

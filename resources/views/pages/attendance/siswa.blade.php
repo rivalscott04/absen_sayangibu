@@ -35,7 +35,7 @@
       <div class="card">
         <div class="card-content">
           <span class="card-title">
-            <a class= "waves-effect waves-light btn modal-trigger" href="#tambah-data">
+            <a class= "waves-effect waves-light btn gradient-45deg-light-blue-cyan modal-trigger" href="#tambah-data">
               <i class="material-icons left">add_box</i> Tambah
             </a>
           </span>
@@ -113,19 +113,7 @@
                   </div>
                 </div>
               </form>
-              @if(session('success'))
-                <script>
-                  Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: "{{session('success')}}"
-                  });
-                </script>                
-              @endif
             </div>
-            {{-- <div class="modal-footer">
-              <a href="#" class="modal-action modal-close waves-effect waves-green btn flat">Agree</a>
-            </div> --}}
           </div>
           <h4 class="card-title">Page Length Options</h4>
           <div class="row">
@@ -152,9 +140,9 @@
                         <td>{{$i->kode}}</td>
                         <td>{{$i->kartu}}</td>
                         <td>
-                          <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a>
+                          <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary orange darken-3 btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a>
                           {{-- <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?| Data ini akan terhapus. Lanjutkan ?" data-confirm-yes="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i>Hapus</a> --}}
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"  onclick="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i>Hapus</a>
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" onclick="hapus({{$i->id}})" title="Delete"><i class="material-icons left">delete_forever</i>Hapus</a>
                         </td>
                       </tr>
                   @endforeach
@@ -192,86 +180,6 @@
 @section('page-script')
 <script src="{{asset('js/scripts/data-tables.js')}}"></script>
 <script src="{{asset('js/scripts/siswa.js')}}"></script>
-{{-- <script type="text/javascript">
-  document.addEventListener('DOMContentLoaded', function(){
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-  
-    // $(document).ready(function(){
-    //   var table = $('#data-table').DataTable({
-    //   responsive: true,
-    //   lengthMenu: [
-    //     [10, 25, 50, -1],
-    //     [10, 25, 50, "All"]
-    //   ],
-    //   processing: true,
-    //   serverSide: true,
-    //   ajax: "{{ route('siswa.index') }}",
-    //   columns: [
-    //     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-    //     {data: 'nis', name: 'nis'},
-    //     {data: 'nama', name: 'nama'},
-    //     {data: 'kelas', name: 'kelas'},
-    //     {data: 'kode', name: 'kode'},
-    //     {data: 'kartu', name: 'kartu'},
-    //     {data: 'action',name: 'action', orderable: false, searchable: false},
-    //   ]
-    //   });
-    // });
-  
-    //delete
-    $('#data-table').on('click', '.delete', function(){
-      var siswa_id = $(this).data("id");
-  
-      Swal.fire({
-        title: 'Yakin Mau Hapus ?',
-        text: 'Jika sudah terhapus data tidak dapat dikembalikan!',
-        icon: 'warning',
-        showCancelButton:true,
-        confirmButtonText: 'Ya, Hapus!',
-        cancelButtonText: 'Batal',
-        reverseButtons: true
-      }).then((result)=> {
-        if(result.isConfirmed){
-          $.ajax({
-            type: "DELETE",
-            url: "siswa/"+siswa_id,
-            success: function(data){
-              Swal.fire(
-                'Deleted',
-                'Data has been deleted',
-                'success'
-              ).then(() => {
-                $('#data-table').DataTable().ajax.reload();
-              })
-            },
-            error: function(xhr) {
-              Swal.fire(
-                'Error!',
-                'An error occured while deleting data.',
-                'error'
-              );
-            }
-          });
-        }else if (result.dismiss === Swal.DismissReason.cancel){
-          Swal.fire(
-            'Batal!',
-            'Batal Melakukan Hapus Data.',
-            'error'
-          );
-        }
-      })
-  
-    });
-  });
-
-</script> --}}
 @endsection
 
 

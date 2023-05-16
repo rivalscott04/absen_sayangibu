@@ -51,17 +51,6 @@ $(function () {
       [10, 25, 50, -1],
       [10, 25, 50, "All"]
     ],
-    processing: true,
-    serverSide: true,
-    ajax: "{{ route('siswa.index') }}",
-    columns: [
-      {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-      {data: 'nis', name: 'nis'},
-      {data: 'nama', name: 'nama'},
-      {data: 'kelas', name: 'kelas'},
-      {data: 'kode', name: 'kode'},{data: 'kartu', name: 'kartu'},
-      {data: 'action',name: 'action', orderable: false, searchable: false},
-    ]
   });
 
   // Dynmaic Scroll table
