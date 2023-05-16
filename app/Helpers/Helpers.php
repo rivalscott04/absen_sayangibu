@@ -25,9 +25,9 @@ class Helpers
             'isFooterFixed' => false,
             'templateTitle' => '',
             'defaultLanguage'=>'en',
-            'largeScreenLogo' => 'images/logo/materialize-logo-color.png',
+            'largeScreenLogo' => 'images/logo/sayangibu-logo.png',
             // 'largeScreenLogo' => 'images/logo/materialize-logo-color.png',
-            'smallScreenLogo' => 'images/logo/materialize-logo.png',
+            'smallScreenLogo' => 'images/logo/sayangibu-logo.png',
             'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'),
         ];
 

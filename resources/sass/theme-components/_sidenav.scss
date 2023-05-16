@@ -29,16 +29,16 @@
       font-size: 3rem;
       white-space: nowrap;
       margin: 0;
-      line-height: 17px !important;
+      line-height: 25px !important;
       a.brand-logo {
          img {
-            height: 18px;
+            height: 30px;
          }
       }
       a.navbar-toggler {
          position: absolute;
-         right: 23px;
-         top: 7px;
+         right: 13px;
+         top: 14px;
          i {
             color: $title-font-color;
             font-size: 15px;
@@ -50,7 +50,7 @@
    }
 
    span.logo-text {
-      font-size: 24px;
+      font-size: 35px;
       padding-left: 8px;
       visibility: visible;
       opacity: 1;

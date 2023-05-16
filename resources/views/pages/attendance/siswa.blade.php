@@ -39,6 +39,8 @@
               <i class="material-icons left">add_box</i> Tambah
             </a>
           </span>
+
+          <!-- tambah data -->
           <div id="tambah-data" class="modal">
             <div class="modal-content">
               <h4>Tambah Siswa</h4>
@@ -115,6 +117,86 @@
               </form>
             </div>
           </div>
+
+          <!-- edit data -->
+          <div id="edit-data" class="modal">
+            <div class="modal-content">
+              <h4>Edit Data</h4>
+              <form id="form-edit-siwa" method="POST" enctype="multipart/form-data">
+                @method('PUT')
+                @csrf
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <input id="nis" name="nis" type="text" value="" required>
+                    <label for="nis">Nomor Induk Sekolah</label>
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <input id="nama" name="nama" type="text" required>
+                    <label for="nama">Nama Siswa</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <select name="kelas" id="kelas">
+                      <option value="" selected></option>
+                      <option value="VII">VII</option>
+                      <option value="VIII">VIII</option>
+                      <option value="IX">IX</option>
+                    </select>
+                    <label for="kelas">Kelas</label>
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <input id="kode" name="kode" type="text" value="" required>
+                    <label for="kode">Kode</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <input id="kartu" name="kartu" type="text" value="" required>
+                    <label for="kartu">Kartu</label>
+                  </div>
+                  <div class="col m6 s12 file-field input-field">
+                    <div class="btn float-right">
+                      <i class="material-icons left">add_a_photo</i>
+                      <span>Photo</span>
+                      <input type="file" name="foto">
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text">
+                    </div>
+                  </div>
+                </div>
+                {{-- <div class="row">
+                  <div class="col s12">
+                    <p>Gender</p>
+                    <p>
+                      <label>
+                        <input class="validate" required name="gender0" type="radio" checked />
+                        <span>Male</span>
+                      </label>
+                    </p>
+  
+                    <label>
+                      <input class="validate" required name="gender0" type="radio" />
+                      <span>Female</span>
+                    </label>
+                    <div class="input-field">
+                    </div>
+                  </div>
+                </div> --}}
+                <div class="row">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button class="btn cyan waves-effect waves-light right" type="submit" id="update">Update
+                        <i class="material-icons right">send</i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
           <h4 class="card-title">Page Length Options</h4>
           <div class="row">
             <div class="col s12">
@@ -140,7 +222,8 @@
                         <td>{{$i->kode}}</td>
                         <td>{{$i->kartu}}</td>
                         <td>
-                          <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary orange darken-3 btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a>
+                          <a href="#" class="btn orange darken-3 mr-1 edit-link" data-id="{{$i->id}}"><i class="material-icons left">edit</i>Edit</a>
+                          <!-- <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary orange darken-3 btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a> -->
                           {{-- <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?| Data ini akan terhapus. Lanjutkan ?" data-confirm-yes="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i>Hapus</a> --}}
                           <a class="btn btn-danger btn-action" data-toggle="tooltip" onclick="hapus({{$i->id}})" title="Delete"><i class="material-icons left">delete_forever</i>Hapus</a>
                         </td>
@@ -180,6 +263,28 @@
 @section('page-script')
 <script src="{{asset('js/scripts/data-tables.js')}}"></script>
 <script src="{{asset('js/scripts/siswa.js')}}"></script>
+
+<script>
+  $(document).on('click', '.edit-link', function(e){
+    e.preventDefault();
+    var id = $(this).data('id');
+    $.ajax({
+      url:'siswa/'+id,
+      type: 'GET',
+      success: function(res){
+        $('#edit-data').modal(show);
+
+        $('#nis').val(res.nis);
+        $('#nama').val(res.nama);
+        $('#kelas').val(res.kelas);
+        $('#kode').val(res.kode);
+        $('#kartu').val(res.kartu);
+
+        $('#form-edit-data').attr('action', 'siswa/'+res.id);
+      }
+    })
+  });
+</script>
 @endsection
 
 
