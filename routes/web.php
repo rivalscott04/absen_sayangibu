@@ -30,13 +30,16 @@ Auth::routes(['verify' => true]);
 
 
 
-Route::group(['prefix' => 'api'], function () {
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
 
     // SISWA
-    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
-    Route::get('/siswa/{id}', [SiswaController::class, 'get'])->name('siswa.get');
-    Route::get('/siswa/nis/{nis}', [SiswaController::class, 'getByNis'])->name('siswa.getByNis');
-    Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
-    Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
-    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    Route::get('/siswa', 'SiswaController@index')->name('api.siswa.index');
+    Route::get('/siswa/{id}', 'SiswaController@get')->name('api.siswa.get');
+    Route::get('/siswa/nis/{nis}', 'SiswaController@getByNis')->name('api.siswa.getByNis');
+    Route::post('/siswa', 'SiswaController@store')->name('api.siswa.store');
+    Route::put('/siswa/{id}', 'SiswaController@update')->name('api.siswa.update');
+    Route::delete('/siswa/{id}', 'SiswaController@destroy')->name('api.siswa.destroy');
 });
