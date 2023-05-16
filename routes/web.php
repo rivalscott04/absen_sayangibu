@@ -40,6 +40,6 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::get('/siswa/{id}', 'SiswaController@get')->name('api.siswa.get');
     Route::get('/siswa/nis/{nis}', 'SiswaController@getByNis')->name('api.siswa.getByNis');
     Route::post('/siswa', 'SiswaController@store')->name('api.siswa.store');
-    Route::put('/siswa/{id}', 'SiswaController@update')->name('api.siswa.update');
+    Route::post('/siswa/{id}', 'SiswaController@update')->name('api.siswa.update');
     Route::delete('/siswa/{id}', 'SiswaController@destroy')->name('api.siswa.destroy');
 });

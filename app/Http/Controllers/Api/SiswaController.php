@@ -58,14 +58,13 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
-        // return "OK";
         $validator = Validator::make($request->all(), [
             "nis" => "required",
             "nama" => "required",
+            "jenis_kelamin" => "required",
             "kelas" => "required",
             "kode" => "required",
             "kartu" => "required",
-            // "foto" => "required",
             'foto' => 'mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -76,20 +75,30 @@ class SiswaController extends Controller
             ], 501);
         }
 
-        // $fileName = $request->nis . '.' . $request->file->extension();
-        // $request->file('foto')->storeAs('public/foto', $fileName);
-        $file = $request->file('foto');
-        $fileName = $request->nis . '.' . $file->extension();
-        Storage::putFileAs('foto', $file, $fileName);
+        $cekNis = Siswa::firstWhere('nis', $request->nis);
+        if ($cekNis) {
+            return response()->json([
+                'status' => 'Error',
+                'message' => 'NIS Exists',
+                'data' => $cekNis
+            ], 200);
+        }
+
+        if ($request->foto != null) {
+            $file = $request->file('foto');
+            $fileName = time() . '.' . $file->extension();
+            Storage::putFileAs('foto', $file, $fileName);
+        } else {
+            $fileName = 'person.png';
+        }
 
         $data = new Siswa();
-
         $data->nis = $request->nis;
         $data->nama = $request->nama;
+        $data->jenis_kelamin = $request->jenis_kelamin;
         $data->kelas = $request->kelas;
         $data->kode = $request->kode;
         $data->kartu = $request->kartu;
-        // $data->foto = $request->foto;
         $data->foto = $fileName;
 
         $data->save();
@@ -103,13 +112,15 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
+        // return $id;
         $validator = Validator::make($request->all(), [
             "nis" => "required",
             "nama" => "required",
+            "jenis_kelamin" => "required",
             "kelas" => "required",
             "kode" => "required",
             "kartu" => "required",
-            "foto" => "required",
+            'foto' => 'mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -119,23 +130,36 @@ class SiswaController extends Controller
             ], 501);
         }
 
-
         $data = Siswa::firstWhere('id', $id);
         if ($data) {
-            // $data = new Siswa();
+            if ($request->foto == null) {
+                if ($data->foto == 'person.png') {
+                    $fileName = 'person.png';
+                } else {
+                    $fileName = $data->foto;
+                }
+            } else {
+                if ($data->foto != 'person.png') {
+                    Storage::delete('foto/' . $data->foto);
+                }
+                $file = $request->file('foto');
+                $fileName = time() . '.' . $file->extension();
+                Storage::putFileAs('foto', $file, $fileName);
+            }
 
             $data->nis = $request->nis;
             $data->nama = $request->nama;
+            $data->jenis_kelamin = $request->jenis_kelamin;
             $data->kelas = $request->kelas;
             $data->kode = $request->kode;
             $data->kartu = $request->kartu;
-            $data->foto = $request->foto;
+            $data->foto = $fileName;
 
-            $data->save();
+            $data->update();
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'New Siswa Created',
+                'message' => 'Siswa Updated',
                 'data' => $data
             ], 201);
         } else {
@@ -150,6 +174,9 @@ class SiswaController extends Controller
     public function destroy($id)
     {
         $data = Siswa::findOrFail($id);
+        if ($data->foto != 'person.png') {
+            Storage::delete('foto/' . $data->foto);
+        }
         $data->delete();
         return response()->json([
             'status' => 'success',
