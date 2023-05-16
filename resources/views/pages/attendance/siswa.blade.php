@@ -127,18 +127,18 @@
                 @csrf
                 <div class="row">
                   <div class="input-field col m6 s12">
-                    <input id="nis" name="nis" type="text" value="" required>
+                    <input id="nis-edit" name="nis" type="text" value="" required>
                     <label for="nis">Nomor Induk Sekolah</label>
                   </div>
                   <div class="input-field col m6 s12">
-                    <input id="nama" name="nama" type="text" required>
+                    <input id="nama-edit" name="nama" type="text" required>
                     <label for="nama">Nama Siswa</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col m6 s12">
-                    <select name="kelas" id="kelas">
-                      <option value="" selected></option>
+                    <select name="kelas" id="kelas-edit">
+                      {{-- <option value=""></option> --}}
                       <option value="VII">VII</option>
                       <option value="VIII">VIII</option>
                       <option value="IX">IX</option>
@@ -146,13 +146,13 @@
                     <label for="kelas">Kelas</label>
                   </div>
                   <div class="input-field col m6 s12">
-                    <input id="kode" name="kode" type="text" value="" required>
+                    <input id="kode-edit" name="kode" type="text" value="" required>
                     <label for="kode">Kode</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col m6 s12">
-                    <input id="kartu" name="kartu" type="text" value="" required>
+                    <input id="kartu-edit" name="kartu" type="text" value="" required>
                     <label for="kartu">Kartu</label>
                   </div>
                   <div class="col m6 s12 file-field input-field">
@@ -268,18 +268,19 @@
   $(document).on('click', '.edit-link', function(e){
     e.preventDefault();
     var id = $(this).data('id');
+    // console.log(id);
     $.ajax({
-      url:'siswa/'+id,
+      url:'api/siswa/'+id,
       type: 'GET',
       success: function(res){
-        $('#edit-data').modal(show);
-
-        $('#nis').val(res.nis);
-        $('#nama').val(res.nama);
-        $('#kelas').val(res.kelas);
-        $('#kode').val(res.kode);
-        $('#kartu').val(res.kartu);
-
+        // console.log(res);
+        $('#nis-edit').val(res.data.nis);
+        $('#nama-edit').val(res.data.nama);
+        $('#kelas-edit').val(res.data.kelas);
+        $('#kode-edit').val(res.data.kode);
+        $('#kartu-edit').val(res.data.kartu);
+        
+        $('#edit-data').modal('open');
         $('#form-edit-data').attr('action', 'siswa/'+res.id);
       }
     })
