@@ -42,4 +42,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::post('/siswa', 'SiswaController@store')->name('api.siswa.store');
     Route::post('/siswa/{id}', 'SiswaController@update')->name('api.siswa.update');
     Route::delete('/siswa/{id}', 'SiswaController@destroy')->name('api.siswa.destroy');
+
+    // ABSEN
+    Route::post('/absensi', 'AbsenController@store')->name('api.absensi.store');
 });
