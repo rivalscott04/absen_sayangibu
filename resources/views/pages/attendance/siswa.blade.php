@@ -44,7 +44,7 @@
           <div id="tambah-data" class="modal">
             <div class="modal-content">
               <h4>Tambah Siswa</h4>
-              <form id="form-tambah-data" method="POST" action="{{route('siswa.store')}}" enctype="multipart/form-data">
+              <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="input-field col m6 s12">
@@ -87,24 +87,24 @@
                     </div>
                   </div>
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                   <div class="col s12">
                     <p>Gender</p>
                     <p>
                       <label>
-                        <input class="validate" required name="gender0" type="radio" checked />
-                        <span>Male</span>
+                        <input class="validate" required name="jenis_kelamin" value="Laki-Laki" id="jenis_kelamin" type="radio" checked />
+                        <span>Laki-Laki</span>
                       </label>
                     </p>
   
                     <label>
-                      <input class="validate" required name="gender0" type="radio" />
-                      <span>Female</span>
+                      <input class="validate" required name="jenis_kelamin" value="Perempuan" id="jenis_kelamin" type="radio" />
+                      <span>Perempuan</span>
                     </label>
                     <div class="input-field">
                     </div>
                   </div>
-                </div> --}}
+                </div>
                 <div class="row">
                   <div class="row">
                     <div class="input-field col s12">
@@ -122,16 +122,16 @@
           <div id="edit-data" class="modal">
             <div class="modal-content">
               <h4>Edit Data</h4>
-              <form id="form-edit-siwa" method="POST" enctype="multipart/form-data">
-                @method('PUT')
+              <form id="form-edit-siswa" method="POST" enctype="multipart/form-data">
                 @csrf
+                <!-- @method('PUT') -->
                 <div class="row">
                   <div class="input-field col m6 s12">
-                    <input id="nis-edit" name="nis" type="text" value="" required>
+                    <input id="nis-edit" placeholder="nis" name="nis" type="text" value="" required>
                     <label for="nis">Nomor Induk Sekolah</label>
                   </div>
                   <div class="input-field col m6 s12">
-                    <input id="nama-edit" name="nama" type="text" required>
+                    <input id="nama-edit" placeholder="nama" name="nama" type="text" required>
                     <label for="nama">Nama Siswa</label>
                   </div>
                 </div>
@@ -146,13 +146,13 @@
                     <label for="kelas">Kelas</label>
                   </div>
                   <div class="input-field col m6 s12">
-                    <input id="kode-edit" name="kode" type="text" value="" required>
+                    <input id="kode-edit" placeholder="kode" name="kode" type="text" value="" required>
                     <label for="kode">Kode</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col m6 s12">
-                    <input id="kartu-edit" name="kartu" type="text" value="" required>
+                    <input id="kartu-edit" placeholder="kartu" name="kartu" type="text" value="" required>
                     <label for="kartu">Kartu</label>
                   </div>
                   <div class="col m6 s12 file-field input-field">
@@ -166,24 +166,24 @@
                     </div>
                   </div>
                 </div>
-                {{-- <div class="row">
+                <div class="row">
                   <div class="col s12">
                     <p>Gender</p>
                     <p>
                       <label>
-                        <input class="validate" required name="gender0" type="radio" checked />
-                        <span>Male</span>
+                        <input class="validate" required name="jenis_kelamin" value="Laki-Laki" id="radio-male" type="radio"/>
+                        <span>Laki-Laki</span>
                       </label>
                     </p>
   
                     <label>
-                      <input class="validate" required name="gender0" type="radio" />
-                      <span>Female</span>
+                      <input class="validate" required name="jenis_kelamin" value="Perempuan" id="radio-female" type="radio" />
+                      <span>Perempuan</span>
                     </label>
                     <div class="input-field">
                     </div>
                   </div>
-                </div> --}}
+                </div>
                 <div class="row">
                   <div class="row">
                     <div class="input-field col s12">
@@ -206,6 +206,7 @@
                     <th>No</th>
                     <th>NIS</th>
                     <th>Nama</th>
+                    <th>Jenis Kelamin</th>
                     <th>Kelas</th>
                     <th>Kode</th>
                     <th>Kartu</th>
@@ -218,6 +219,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$i->nis}}</td>
                         <td>{{$i->nama}}</td>
+                        <td>{{$i->jenis_kelamin}}</td>
                         <td>{{$i->kelas}}</td>
                         <td>{{$i->kode}}</td>
                         <td>{{$i->kartu}}</td>
@@ -235,6 +237,7 @@
                     <th>No</th>
                     <th>NIS</th>
                     <th>Nama</th>
+                    <th>Jenis Kelamin</th>
                     <th>Kelas</th>
                     <th>Kode</th>
                     <th>Kartu</th>
@@ -263,29 +266,6 @@
 @section('page-script')
 <script src="{{asset('js/scripts/data-tables.js')}}"></script>
 <script src="{{asset('js/scripts/siswa.js')}}"></script>
-
-<script>
-  $(document).on('click', '.edit-link', function(e){
-    e.preventDefault();
-    var id = $(this).data('id');
-    // console.log(id);
-    $.ajax({
-      url:'api/siswa/'+id,
-      type: 'GET',
-      success: function(res){
-        // console.log(res);
-        $('#nis-edit').val(res.data.nis);
-        $('#nama-edit').val(res.data.nama);
-        $('#kelas-edit').val(res.data.kelas);
-        $('#kode-edit').val(res.data.kode);
-        $('#kartu-edit').val(res.data.kartu);
-        
-        $('#edit-data').modal('open');
-        $('#form-edit-data').attr('action', 'siswa/'+res.id);
-      }
-    })
-  });
-</script>
 @endsection
 
 
