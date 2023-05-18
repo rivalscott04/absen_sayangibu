@@ -7,15 +7,17 @@ document.addEventListener('DOMContentLoaded', function(){
 //tambah data
 $('#form-tambah-data').on('submit', function(e){
   e.preventDefault();
-  var actionUrl = $(this).attr('action');
-  console.log('url', actionUrl);
-  var formData = $(this).serialize();
+  // var actionUrl = $(this).attr('action');
+  let actionUrl = 'api/siswa/';
+  let formData = new FormData(this);
   console.log('form', formData);
 
   $.ajax({
     url: actionUrl,
     type: 'POST',
     data: formData,
+    contentType: false,
+    processData: false,
     success: function(res){
       Swal.fire({
         icon: 'success',
@@ -38,17 +40,19 @@ $('#form-tambah-data').on('submit', function(e){
     }
   });
 });
-
+var idEdit
 $(document).on('click', '.edit-link', function(e){
   e.preventDefault();
-  var id = $(this).data('id');
+  let id = $(this).data('id');
+  idEdit = id
   // console.log(id);
   $.ajax({
     url:'api/siswa/'+id,
     type: 'GET',
     success: function(res){
-      var jk = res.data.jenis_kelamin;
+      let jk = res.data.jenis_kelamin;
       console.log(res);
+      $('#id-edit').val(res.data.id);
       $('#nis-edit').val(res.data.nis);
       $('#nama-edit').val(res.data.nama);
       $('#jenis_kelamin-edit').val(res.data.jenis_kelamin);
@@ -60,22 +64,29 @@ $(document).on('click', '.edit-link', function(e){
       $('#kelas-edit').val(res.data.kelas);
       $('#kode-edit').val(res.data.kode);
       $('#kartu-edit').val(res.data.kartu);
-      ('#foto-edit').val(res.data.foto);
+      $('#foto-name').val(res.data.foto);
       
       $('#edit-data').modal('open');
-      $('#form-edit-siswa').attr('action', 'api/siswa/'+res.data.id);
+      $('#form-edit-siswa').attr('action', 'api/siswa/'+idEdit);
     }
   });
 
   $('#form-edit-siswa').on('submit', function(event) {
     event.preventDefault(); //agar form submit tidak default
-
+    // id = document.getElementById('#id-edit').val();
+    // console.log(idEdit);
+    // let id = idEdit;
     var actionUrl = $(this).attr('action'); //dapatkan url action dari form
+    // var actionUrl = "{{url('api/siswa')}}"+"/"+id; //dapatkan url action dari form
+    console.log(actionUrl);
+    let formData = new FormData(this);
     
     $.ajax({
       url: actionUrl,
       type: 'POST',
-      data: $(this).serialize(),
+      data: formData,
+      contentType: false,
+      processData: false,
       success: function(res){
         Swal.fire({
           icon: 'success',
