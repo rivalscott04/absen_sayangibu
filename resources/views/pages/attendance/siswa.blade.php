@@ -44,7 +44,8 @@
           <div id="tambah-data" class="modal">
             <div class="modal-content">
               <h4>Tambah Siswa</h4>
-              <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data">
+              {{-- <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data"> --}}
+              <form id="form-tambah-data" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <div class="input-field col m6 s12">
@@ -127,6 +128,7 @@
                 <!-- @method('PUT') -->
                 <div class="row">
                   <div class="input-field col m6 s12">
+                    <input id="id-edit" name="id-edit" type="text" required hidden>
                     <input id="nis-edit" placeholder="nis" name="nis" type="text" value="" required>
                     <label for="nis">Nomor Induk Sekolah</label>
                   </div>
@@ -159,10 +161,10 @@
                     <div class="btn float-right">
                       <i class="material-icons left">add_a_photo</i>
                       <span>Photo</span>
-                      <input type="file" name="foto">
+                      <input type="file" name="foto_edit">
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path validate" type="text">
+                      <input class="file-path validate" type="text" id="foto-name">
                     </div>
                   </div>
                 </div>

@@ -60,6 +60,7 @@ $(document).on('click', '.edit-link', function(e){
       $('#kelas-edit').val(res.data.kelas);
       $('#kode-edit').val(res.data.kode);
       $('#kartu-edit').val(res.data.kartu);
+      ('#foto-edit').val(res.data.foto);
       
       $('#edit-data').modal('open');
       $('#form-edit-siswa').attr('action', 'api/siswa/'+res.data.id);
