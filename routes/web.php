@@ -50,5 +50,6 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     // MESIN
     Route::post('/mesin/check', 'MesinController@cekMesin')->name('api.mesin.cek');
     Route::post('/mesin', 'MesinController@store')->name('api.mesin.store');
-    Route::get('/mesin/cobalah', 'MesinController@mesinNih')->name('api.mesin.nih');
+    Route::get('/mesin', 'MesinController@index')->name('api.mesin.index');
+    // Route::get('/mesin/cobalah', 'MesinController@mesinNih')->name('api.mesin.nih');
 });

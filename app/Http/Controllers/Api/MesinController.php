@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\Validator;
 
 class MesinController extends Controller
 {
+
+    public function index()
+    {
+        $data = Mesin::get();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'List of Siswa',
+            'data' => $data
+        ], 200);
+    }
+
     public function cekMesin(Request $request)
     {
         // return $request;
