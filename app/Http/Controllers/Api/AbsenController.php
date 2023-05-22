@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Validator;
 
 class AbsenController extends Controller
 {
+    public function index()
+    {
+        $data = Absen::with('siswa')->get();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'List of Absen',
+            'data' => $data
+        ], 200);
+    }
+
     public function store(Request $request)
     {
         // return $request;
@@ -36,18 +46,9 @@ class AbsenController extends Controller
         }
 
         $today = Carbon::now()->format('Y-m-d');
-        // $absen = Absen::where(['kartu_id' => $request->card_id, 'tanggal' => $today])->first();
-
-        // if ($absen) {
-        //     return response()->json([
-        //         'status' => 'error',
-        //         'message' => 'Data Entered',
-        //         'data' => $absen
-        //     ], 501);
-        // }
-        // return $siswa;
 
         $data = new Absen();
+        $data->nis_id = $siswa->nis;
         $data->kartu_id = $request->kartu_id;
         $data->tanggal = $today;
         $data->kelas = "A";

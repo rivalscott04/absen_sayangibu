@@ -44,5 +44,11 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::delete('/siswa/{id}', 'SiswaController@destroy')->name('api.siswa.destroy');
 
     // ABSEN
+    Route::get('/absensi', 'AbsenController@index')->name('api.absensi.index');
     Route::post('/absensi', 'AbsenController@store')->name('api.absensi.store');
+
+    // MESIN
+    Route::post('/mesin/check', 'MesinController@cekMesin')->name('api.mesin.cek');
+    Route::post('/mesin', 'MesinController@store')->name('api.mesin.store');
+    Route::get('/mesin/cobalah', 'MesinController@mesinNih')->name('api.mesin.nih');
 });
