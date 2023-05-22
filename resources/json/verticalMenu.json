@@ -5,14 +5,14 @@
       "name": "Dashboard",
       "i18n": "Dashboard",
       "class":"waves-effect waves-cyan",
-      "icon": "settings_input_svideo"
+      "icon": "dashboard"
     },
     {
       "url": "javascript:void(0)",
       "name": "Attendance",
       "i18n": "Attendance",
       "class": "collapsible-header waves-effect waves-cyan",
-      "icon": "photo_filter",
+      "icon": "people",
       "slug": "",
       "submenu": [
         {
@@ -22,12 +22,26 @@
           "slug": ""
         },
         {
-          "url": "javascript:void(0)",
+          "url": "kehadiran",
           "name": "Kehadiran",
           "i18n": "Kehadiran",
           "slug": ""
         }
       ]
+    },
+    {
+      "url": "mesin",
+      "name": "Mesin",
+      "i18n": "Mesin",
+      "class":"waves-effect waves-cyan",
+      "icon": "developer_board"
+    },
+    {
+      "url": "schedule",
+      "name": "Schedule",
+      "i18n": "Schedule",
+      "class":"waves-effect waves-cyan",
+      "icon": "schedule"
     }
   ]
 }
