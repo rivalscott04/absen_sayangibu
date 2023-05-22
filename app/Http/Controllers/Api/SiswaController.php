@@ -58,6 +58,7 @@ class SiswaController extends Controller
 
     public function store(Request $request)
     {
+        // return $request;
         $validator = Validator::make($request->all(), [
             "nis" => "required",
             "nama" => "required",
@@ -65,7 +66,7 @@ class SiswaController extends Controller
             "kelas" => "required",
             "kode" => "required",
             "kartu" => "required",
-            'foto' => 'mimes:jpg,jpeg,png|max:2048',
+            'foto' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -120,7 +121,7 @@ class SiswaController extends Controller
             "kelas" => "required",
             "kode" => "required",
             "kartu" => "required",
-            'foto' => 'mimes:jpg,jpeg,png|max:2048',
+            'foto_edit' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -132,7 +133,7 @@ class SiswaController extends Controller
 
         $data = Siswa::firstWhere('id', $id);
         if ($data) {
-            if ($request->foto == null) {
+            if ($request->foto_edit == null) {
                 if ($data->foto == 'person.png') {
                     $fileName = 'person.png';
                 } else {
@@ -142,7 +143,7 @@ class SiswaController extends Controller
                 if ($data->foto != 'person.png') {
                     Storage::delete('foto/' . $data->foto);
                 }
-                $file = $request->file('foto');
+                $file = $request->file('foto_edit');
                 $fileName = time() . '.' . $file->extension();
                 Storage::putFileAs('foto', $file, $fileName);
             }
