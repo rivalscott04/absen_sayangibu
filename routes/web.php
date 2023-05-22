@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AbsenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+
+Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index');
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
 
