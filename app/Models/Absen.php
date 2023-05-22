@@ -10,4 +10,9 @@ class Absen extends Model
     use HasFactory;
 
     protected $table = "absen";
+
+    function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'nis_id', 'nis')->select('nis', 'nama');
+    }
 }
