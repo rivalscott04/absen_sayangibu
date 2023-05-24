@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\MesinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,11 +31,17 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 Auth::routes(['verify' => true]);
 
 
-
+//siswa
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
 
+//kehadiran
 Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index');
+
+//mesin
+Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
+Route::post('/mesin', [MesinController::class, 'store'])->name('mesin.store');
+Route::delete('/mesin/{id}', [MesinController::class, 'destroy'])->name('mesin.destroy');
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
 
