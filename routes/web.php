@@ -62,4 +62,10 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::post('/mesin', 'MesinController@store')->name('api.mesin.store');
     Route::get('/mesin', 'MesinController@index')->name('api.mesin.index');
     // Route::get('/mesin/cobalah', 'MesinController@mesinNih')->name('api.mesin.nih');
+
+    // JADWAL
+    Route::post('/jadwal', 'JadwalController@store')->name('api.jadwal.store');
+    Route::get('/jadwal', 'JadwalController@index')->name('api.jadwal.index');
+    Route::post('/jadwal/{id}', 'JadwalController@update')->name('api.jadwal.update');
+    Route::delete('/jadwal/{id}', 'JadwalController@destroy')->name('api.jadwal.destroy');
 });
