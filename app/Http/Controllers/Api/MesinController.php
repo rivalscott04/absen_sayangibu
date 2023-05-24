@@ -15,7 +15,7 @@ class MesinController extends Controller
         $data = Mesin::get();
         return response()->json([
             'status' => 'success',
-            'message' => 'List of Siswa',
+            'message' => 'List of Mesin',
             'data' => $data
         ], 200);
     }
@@ -26,6 +26,7 @@ class MesinController extends Controller
         $data = Mesin::firstWhere('id', $request->mesin);
         if ($data) {
 
+            $data->ip_address = $request->ip_address;
             $data->aktif = 1;
             $data->update();
 
