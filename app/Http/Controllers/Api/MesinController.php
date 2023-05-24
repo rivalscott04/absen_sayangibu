@@ -27,6 +27,7 @@ class MesinController extends Controller
         if ($data) {
 
             $data->aktif = 1;
+            $data->ip_address = $request->ip_address;
             $data->update();
 
             return response()->json([

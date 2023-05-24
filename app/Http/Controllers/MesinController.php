@@ -12,9 +12,14 @@ class MesinController extends Controller
 
     public function index()
     {
+        $breadcrumbs = [
+            ['link' => "/", 'name' => "Home"],  ['name' => "Data Mesin"],
+        ];
+        //Pageheader set true for breadcrumbs
+        $pageConfigs = ['pageHeader' => true];
         $data = Mesin::get();
 
-        return view('pages.mesin', compact('data'));
+        return view('pages.mesin', ['data' => $data], ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
     }
 
     public function store(Request $request)

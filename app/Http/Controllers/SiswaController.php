@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $data = Siswa::all();
-        return view('pages.attendance.siswa', compact('data'));
+        $breadcrumbs = [
+            ['link' => "/", 'name' => "Home"], ['link' => "javascript:void(0)", 'name' => "Attendance"], ['name' => "Data Siswa"],
+        ];
+        $pageConfigs = ['pageHeader' => true];
+        $data = Siswa::latest()->get();
+        return view('pages.attendance.siswa', ['data' => $data], ['pageConfigs' => $pageConfigs], ['breadcrumbs' => $breadcrumbs]);
     }
 
     public function get($id)

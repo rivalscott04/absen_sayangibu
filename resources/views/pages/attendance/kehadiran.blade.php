@@ -20,12 +20,16 @@
 
 {{-- page content --}}
 @section('content')
+<div class="col s12">
+  <a href="/" class="breadcrumb">Home</a>
+  <a href="#" class="breadcrumb">Attendance</a>
+  <a href="/kehadiran" class="breadcrumb">Kehadiran</a>
+</div>
+<br>
 <div class="section section-data-tables">
   <div class="card">
     <div class="card-content">
-      <p class="caption mb-0">Tables are a nice way to organize a lot of data. We provide a few utility classes to help
-        you style your table as easily as possible. In addition, to improve mobile experience, all tables on
-        mobile-screen widths are centered automatically.</p>
+      <h5 class="mb-0 mt-0" style="font-weight:bold">DATA KEHADIRAN</h5>
     </div>
   </div>
 
