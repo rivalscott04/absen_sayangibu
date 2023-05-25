@@ -6,6 +6,8 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\MesinController;
+use App\Http\Controllers\JadwalController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +44,10 @@ Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index')
 Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
 Route::post('/mesin', [MesinController::class, 'store'])->name('mesin.store');
 Route::delete('/mesin/{id}', [MesinController::class, 'destroy'])->name('mesin.destroy');
+
+//jadwal
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
+
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
 

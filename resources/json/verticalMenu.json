@@ -37,7 +37,7 @@
       "icon": "developer_board"
     },
     {
-      "url": "schedule",
+      "url": "jadwal",
       "name": "Schedule",
       "i18n": "Schedule",
       "class":"waves-effect waves-cyan",

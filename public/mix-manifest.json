@@ -25,6 +25,7 @@
     "/css/pages/widget-timeline.css": "/css/pages/widget-timeline.css",
     "/css/pages/variables.css": "/css/pages/variables.css",
     "/js/scripts/data-tables.js": "/js/scripts/data-tables.js",
+    "/js/scripts/jadwal.js": "/js/scripts/jadwal.js",
     "/js/scripts/mesin.js": "/js/scripts/mesin.js",
     "/js/scripts/siswa.js": "/js/scripts/siswa.js",
     "/js/scripts/ui-alerts.js": "/js/scripts/ui-alerts.js",
