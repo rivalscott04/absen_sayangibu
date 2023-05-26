@@ -22,10 +22,7 @@ use App\Http\Controllers\JadwalController;
 
 // Page Route
 // Route::get('/', [PageController::class, 'blankPage'])->middleware('verified');
-Route::get('/', [PageController::class, 'blankPage']);
-
-Route::get('/page-blank', [PageController::class, 'blankPage']);
-Route::get('/page-collapse', [PageController::class, 'collapsePage']);
+Route::get('/', [PageController::class, 'dashboardModern']);
 
 // locale route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
