@@ -38,8 +38,8 @@
     },
     {
       "url": "jadwal",
-      "name": "Schedule",
-      "i18n": "Schedule",
+      "name": "Jadwal",
+      "i18n": "Jadwal",
       "class":"waves-effect waves-cyan",
       "icon": "schedule"
     }

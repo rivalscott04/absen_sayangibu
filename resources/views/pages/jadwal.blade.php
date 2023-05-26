@@ -40,17 +40,17 @@
     <div class="col s12">
       <div class="card">
         <div class="card-content">
-          <span class="card-title">
+          {{-- <span class="card-title">
             <a class= "waves-effect waves-light btn gradient-45deg-light-blue-cyan modal-trigger" href="#tambah-data">
               <i class="material-icons left">add_box</i> Tambah Jadwal
             </a>
-          </span>
+          </span> --}}
 
           <!-- tambah data -->
-          <div id="tambah-data" class="modal">
+          {{-- <div id="tambah-data" class="modal">
             <div class="modal-content">
               <h4>Tambah Jadwal</h4>
-              {{-- <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data"> --}}
+              <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data">
               <form id="form-tambah-data" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -84,13 +84,13 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div> --}}
 
           <!-- edit data -->
-          <div id="edit-data" class="modal">
+          {{-- <div id="edit-data" class="modal">
             <div class="modal-content">
               <h4>Edit Mesin</h4>
-              <form id="form-edit-mesin" method="POST" enctype="multipart/form-data">
+              <form id="form-edit-jadwal" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- @method('PUT') -->
                 <div class="row">
@@ -98,6 +98,20 @@
                     <input id="id-edit" name="id-edit" type="text" required hidden>
                     <input id="nama-edit" placeholder="nama" name="nama" type="text" value="" required>
                     <label for="nama">Nama</label>
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <input id="tanggal-edit" name="tanggal" type="date" value="">
+                    <label for="tanggal">Tanggal</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col m6 s12">
+                    <input type="time" name="waktu_mulai-edit" id="waktu_mulai-edit" value="" required>
+                    <label for="waktu_mulai">Waktu Mulai</label>              
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <input type="time" name="waktu_selesai-edit" id="waktu_selesai-edit" value="" required>
+                    <label for="waktu_selesai">Waktu Selesai</label>              
                   </div>
                 </div>
                 <div class="row">
@@ -111,7 +125,7 @@
                 </div>
               </form>
             </div>
-          </div>
+          </div> --}}
 
           <h4 class="card-title">Page Length Options</h4>
           <div class="row">
@@ -124,8 +138,8 @@
                     <th>Tanggal</th>
                     <th>Waktu Mulai</th>
                     <th>Waktu Selesai</th>
+                    <th>Status</th>
                     <th>Keterangan</th>
-                    <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -137,17 +151,14 @@
                         <td>{{$i->waktu_mulai}}</td>
                         <td>{{$i->waktu_selesai}}</td>
                         <td>
-                          @if ($i->aktif===0)
-                              <span class="badge red">Offline</span>
+                          @if ($i->aktif==0)
+                              <span class="badge red">Tidak Aktif</span>
                           @else
-                              <span class="badge blue">Online</span>
+                              <span class="badge blue">Aktif</span>
                           @endif
                         </td>
                         <td>
-                          {{-- <a href="#" class="btn orange darken-3 mr-1 edit-link" data-id="{{$i->id}}"><i class="material-icons left">edit</i>Edit</a> --}}
-                          <!-- <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary orange darken-3 btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a> -->
-                          {{-- <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?| Data ini akan terhapus. Lanjutkan ?" data-confirm-yes="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i>Hapus</a> --}}
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" onclick="hapus({{$i->id}})" title="Delete"><i class="material-icons left">delete_forever</i>Hapus</a>
+                          {{$i->status == 1 ? "Akan Berlaku" : ""}}
                         </td>
                       </tr>
                   @endforeach
