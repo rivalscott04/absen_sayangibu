@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MesinController;
 use App\Http\Controllers\JadwalController;
 
@@ -23,6 +24,9 @@ use App\Http\Controllers\JadwalController;
 // Page Route
 // Route::get('/', [PageController::class, 'blankPage'])->middleware('verified');
 Route::get('/', [PageController::class, 'dashboardModern']);
+
+//tes login page
+Route::get('/login', [LoginController::class, 'showLoginForm']);
 
 // locale route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);

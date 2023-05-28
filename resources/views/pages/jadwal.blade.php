@@ -139,7 +139,6 @@
                     <th>Waktu Mulai</th>
                     <th>Waktu Selesai</th>
                     <th>Status</th>
-                    <th>Keterangan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -157,9 +156,6 @@
                               <span class="badge blue">Aktif</span>
                           @endif
                         </td>
-                        <td>
-                          {{$i->status == 1 ? "Akan Berlaku" : ""}}
-                        </td>
                       </tr>
                   @endforeach
                 </tbody>
@@ -170,8 +166,7 @@
                     <th>Tanggal</th>
                     <th>Waktu Mulai</th>
                     <th>Waktu Selesai</th>
-                    <th>Keterangan</th>
-                    <th>Aksi</th>
+                    <th>Status</th>
                   </tr>
                 </tfoot>
               </table>

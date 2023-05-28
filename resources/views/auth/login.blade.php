@@ -1,8 +1,9 @@
 {{-- layout --}}
+{{-- @extends('layouts.contentLayoutMaster') --}}
 @extends('layouts.fullLayoutMaster')
 
 {{-- page title --}}
-@section('title','User Login')
+@section('title','Admin Login')
 
 {{-- page style --}}
 @section('page-style')
@@ -63,7 +64,7 @@
           </button>
         </div>
       </div>
-      <div class="row">
+      {{-- <div class="row">
         <div class="input-field col s6 m6 l6">
           <p class="margin medium-small"><a href="{{ route('register') }}">Register Now!</a></p>
         </div>
@@ -72,7 +73,7 @@
             <a href="{{ route('password.request') }}">Forgot password?</a>
           </p>
         </div>
-      </div>
+      </div> --}}
     </form>
   </div>
 </div>
