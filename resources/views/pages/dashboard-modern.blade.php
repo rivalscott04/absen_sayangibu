@@ -20,10 +20,9 @@
 {{-- page content --}}
 @section('content')
 <div class="section">
-   <!-- Current balance & total transactions cards-->
+   <!-- jumlah siswa-->
    <div class="row vertical-modern-dashboard">
       <div class="col s12 m4 l4">
-         <!-- Current Balance -->
          <div class="card animate fadeLeft">
             <div class="card-content">
                <h4 class="card-title center">Jumlah Siswa Kelas 7</h4>
@@ -33,7 +32,6 @@
          </div>
       </div>
       <div class="col s12 m4 l4">
-         <!-- Current Balance -->
          <div class="card animate">
             <div class="card-content">
                <h4 class="card-title center">Jumlah Siswa Kelas 8</h4>
@@ -43,7 +41,6 @@
          </div>
       </div>
       <div class="col s12 m4 l4">
-         <!-- Current Balance -->
          <div class="card animate fadeRight">
             <div class="card-content">
                <h4 class="card-title center">Jumlah Siswa Kelas 9</h4>
@@ -56,8 +53,8 @@
    <!--/ Current balance & total transactions cards-->
 
    <!-- User statistics & appointment cards-->
-   <div class="row">
-      <div class="col s12 l5">
+   <div class="row vertical-modern-dashboard">
+      <div class="col s12">
          <!-- User Statistics -->
          <!-- <div class="card user-statistics-card animate fadeLeft">
             <div class="card-content">
@@ -87,6 +84,13 @@
                </div>
             </div>
          </div> -->
+         <div class="card animate fadeLeft">
+            <div class="card-content">
+               <h4 class="card-title center">Statistik Kehadiran</h4>
+               <div class="sample-chart-wrapper"><canvas id="bar-chart" height="400"></canvas></div>
+               <!-- <p class="header center">Doughnut Charts</p> -->
+            </div>
+         </div>
       </div>
       <div class="col s12 l4">
          <!-- Recent Buyers -->
