@@ -164,16 +164,23 @@ $(window).on("load", function() {
       labels: ["January", "February", "March", "April"],
       datasets: [
          {
-            label: "My First dataset",
+            label: "Kelas 7",
             data: [65, 59, 80, 81],
-            backgroundColor: "#00bcd4",
+            backgroundColor: "#e09664",
             hoverBackgroundColor: "#00acc1",
             borderColor: "transparent"
          },
          {
-            label: "My Second dataset",
+            label: "Kelas 8",
             data: [28, 48, 40, 19],
-            backgroundColor: "#ffeb3b",
+            backgroundColor: "#fddf97",
+            hoverBackgroundColor: "#fdd835",
+            borderColor: "transparent"
+         },
+         {
+            label: "Kelas 9",
+            data: [40, 28, 51, 29],
+            backgroundColor: "#364968",
             hoverBackgroundColor: "#fdd835",
             borderColor: "transparent"
          }
@@ -181,7 +188,7 @@ $(window).on("load", function() {
    };
 
    var config = {
-      type: "horizontalBar",
+      type: "bar",
 
       // Chart Options
       options: chartOptions,
@@ -386,7 +393,7 @@ $(window).on("load", function() {
          {
             label: "My First dataset",
             data: [65, 59],
-            backgroundColor: ["#03a9f4", "#e91e63"]
+            backgroundColor: ["#f33535", "#211a4c"]
          }
       ]
    };
@@ -421,7 +428,7 @@ $(window).on("load", function() {
         {
            label: "My First dataset",
            data: [65, 59],
-           backgroundColor: ["#03a9f4", "#e91e63"]
+           backgroundColor: ["#f33535", "#211a4c"]
         }
      ]
   };
@@ -456,7 +463,7 @@ $(window).on("load", function() {
         {
            label: "My First dataset",
            data: [65, 59],
-           backgroundColor: ["#03a9f4", "#e91e63"]
+           backgroundColor: ["#f33535", "#211a4c"]
         }
      ]
   };
