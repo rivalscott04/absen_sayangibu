@@ -167,21 +167,21 @@ $(window).on("load", function() {
             label: "Kelas 7",
             data: [65, 59, 80, 81],
             backgroundColor: "#e09664",
-            hoverBackgroundColor: "#00acc1",
+            hoverBackgroundColor: "#e09664",
             borderColor: "transparent"
          },
          {
             label: "Kelas 8",
             data: [28, 48, 40, 19],
             backgroundColor: "#fddf97",
-            hoverBackgroundColor: "#fdd835",
+            hoverBackgroundColor: "#fddf97",
             borderColor: "transparent"
          },
          {
             label: "Kelas 9",
             data: [40, 28, 51, 29],
             backgroundColor: "#364968",
-            hoverBackgroundColor: "#fdd835",
+            hoverBackgroundColor: "#364968",
             borderColor: "transparent"
          }
       ]
