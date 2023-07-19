@@ -63,10 +63,10 @@
                         <td>{{$i->waktu_mulai}}</td>
                         <td>{{$i->waktu_selesai}}</td>
                         <td>
-                          @if ($i->aktif==0)
-                              <span class="badge red">Tidak Aktif</span>
+                          @if ($i->status == 'Aktif')
+                            <span class="badge blue">Aktif</span>
                           @else
-                              <span class="badge blue">Aktif</span>
+                            <span class="badge red">Tidak Aktif</span>
                           @endif
                         </td>
                       </tr>

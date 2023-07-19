@@ -46,9 +46,11 @@
                   <tr>
                     <th>No</th>
                     <th>Kartu ID</th>
+                    <th>Nama</th>
                     <th>Tanggal</th>
                     <th>Kelas</th>
-                    <th>Jam Masuk</th>
+                    <th>Waktu Mulai</th>
+                    <th>Waktu Selesai</th>
                     <th>Jam Absen</th>
                     <th>No Mesin</th>
                     <th>Status</th>
@@ -59,9 +61,11 @@
                       <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$i->kartu_id}}</td>
+                        <td>{{$i->nama}}</td>
                         <td>{{$i->tanggal}}</td>
                         <td>{{$i->kelas}}</td>
-                        <td>{{$i->jam_masuk}}</td>
+                        <td>{{$i->waktu_mulai}}</td>
+                        <td>{{$i->waktu_selesai}}</td>
                         <td>{{$i->jam_absen}}</td>
                         <td>{{$i->no_mesin}}</td>
                         <td>{{$i->status}}</td>
@@ -72,9 +76,11 @@
                   <tr>
                     <th>No</th>
                     <th>Kartu ID</th>
+                    <th>Nama</th>
                     <th>Tanggal</th>
                     <th>Kelas</th>
-                    <th>Jam Masuk</th>
+                    <th>Waktu Mulai</th>
+                    <th>Waktu Selesai</th>
                     <th>Jam Absen</th>
                     <th>No Mesin</th>
                     <th>Status</th>

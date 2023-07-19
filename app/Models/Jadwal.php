@@ -10,4 +10,5 @@ class Jadwal extends Model
     use HasFactory;
 
     protected $table = 'jadwal';
+    protected $fillable = ['nama', 'tanggal', 'waktu_mulai', 'waktu_selesai', 'status'];
 }

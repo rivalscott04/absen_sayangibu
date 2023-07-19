@@ -11,8 +11,13 @@ class Absen extends Model
 
     protected $table = "absen";
 
-    function siswa()
+    public function siswa()
     {
         return $this->belongsTo(Siswa::class, 'nis_id', 'nis')->select('nis', 'nama');
     }
+
+    // public function jadwal()
+    // {
+    //     return $this->belongsTo(Jadwal::class, 'jadwal_id', 'id');
+    // }
 }

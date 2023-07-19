@@ -4,8 +4,55 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e08b00958c77021daa93126264e65f4c",
+    "content-hash": "2217981c27d6689e1a97f9edea694f3e",
     "packages": [
+        {
+            "name": "ahmard/guzwrap",
+            "version": "2.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ahmard/guzwrap.git",
+                "reference": "f9376297477e4af27987503800913ff431042676"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ahmard/guzwrap/zipball/f9376297477e4af27987503800913ff431042676",
+                "reference": "f9376297477e4af27987503800913ff431042676",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.5",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.9",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Guzwrap\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A wrapper around popular php http client, \"GuzzleHttp\"",
+            "keywords": [
+                "Guzzle",
+                "client",
+                "curl",
+                "guzzlehttp",
+                "http"
+            ],
+            "support": {
+                "issues": "https://github.com/Ahmard/guzwrap/issues",
+                "source": "https://github.com/Ahmard/guzwrap/tree/2.4.4"
+            },
+            "time": "2022-12-21T15:21:32+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",

@@ -18,9 +18,11 @@ return new class extends Migration
             // $table->timestamps();
             $table->string('kartu_id');
             $table->string('nis_id');
+            $table->string('nama');
             $table->date('tanggal');
             $table->string('kelas');
-            $table->time('jam_masuk');
+            $table->time('waktu_mulai');
+            $table->time('waktu_selesai');
             $table->time('jam_absen');
             $table->integer('no_mesin');
             $table->integer('status');

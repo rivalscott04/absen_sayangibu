@@ -26,12 +26,12 @@ use App\Http\Controllers\JadwalController;
 Route::get('/', [PageController::class, 'dashboardModern']);
 
 //tes login page
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+// Route::get('/login', [LoginController::class, 'showLoginForm']);
 
 // locale route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 
 //siswa
@@ -75,4 +75,5 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::get('/jadwal', 'JadwalController@index')->name('api.jadwal.index');
     Route::post('/jadwal/{id}', 'JadwalController@update')->name('api.jadwal.update');
     Route::delete('/jadwal/{id}', 'JadwalController@destroy')->name('api.jadwal.destroy');
+    Route::post('/post-jadwal', 'JadwalController@postJadwalSholat');
 });
