@@ -8,7 +8,7 @@ use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MesinController;
 use App\Http\Controllers\JadwalController;
-
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,35 +23,43 @@ use App\Http\Controllers\JadwalController;
 
 // Page Route
 // Route::get('/', [PageController::class, 'blankPage'])->middleware('verified');
-Route::get('/', [PageController::class, 'dashboardModern']);
 
 //tes login page
-// Route::get('/login', [LoginController::class, 'showLoginForm']);
+// Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+
 
 // locale route
 Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 // Auth::routes(['verify' => true]);
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/', [PageController::class, 'dashboardModern']);
+    //siswa
+    Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+    Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
+    
+    //kehadiran
+    Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index');
+    
+    //mesin
+    Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
+    Route::post('/mesin', [MesinController::class, 'store'])->name('mesin.store');
+    Route::delete('/mesin/{id}', [MesinController::class, 'destroy'])->name('mesin.destroy');
+    
+    //jadwal
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
 
-//siswa
-Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
-Route::post('/siswa', [SiswaController::class, 'store'])->name('siswa.store');
-
-//kehadiran
-Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index');
-
-//mesin
-Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
-Route::post('/mesin', [MesinController::class, 'store'])->name('mesin.store');
-Route::delete('/mesin/{id}', [MesinController::class, 'destroy'])->name('mesin.destroy');
-
-//jadwal
-Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
-
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    
+    
+});
 
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
-
+    
     // SISWA
     Route::get('/siswa', 'SiswaController@index')->name('api.siswa.index');
     Route::get('/siswa/{id}', 'SiswaController@get')->name('api.siswa.get');

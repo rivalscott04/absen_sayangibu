@@ -26,7 +26,7 @@
           <i class="material-icons prefix pt-2">person_outline</i>
           <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email"
             value="{{ old('email') }}"  autocomplete="email" autofocus>
-          <label for="email" class="center-align">{{ __('Username') }}</label>
+          <label for="email" class="center-align">{{ __('Email') }}</label>
           @error('email')
           <small class="red-text ml-7" >
             {{ $message }}

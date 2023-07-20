@@ -31,7 +31,7 @@
           <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('app-contacts')}}">Contacts</a></li>
           <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('page-faq')}}">FAQ</a></li>
           <li class="divider" tabindex="-1"></li>
-          <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('user-login')}}">Logout</a></li>
+          <li tabindex="0"><a class="grey-text text-darken-2" href="{{route('logout')}}">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -67,7 +67,8 @@
           <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('app-contacts')}}">Contacts</a></li>
           <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('page-faq')}}">FAQ</a></li>
           <li class="divider" tabindex="-1"></li>
-          <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('user-login')}}">Logout</a></li>
+          {{-- <li tabindex="0"><a class="grey-text text-darken-2" href="{{asset('user-login')}}">Logout</a></li> --}}
+          <li tabindex="0"><a class="grey-text text-darken-2" href="{{route('logout')}}">Logout</a></li>
         </ul>
       </div>
     </div>
