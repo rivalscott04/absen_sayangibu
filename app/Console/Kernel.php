@@ -19,21 +19,21 @@ class Kernel extends ConsoleKernel
      */
     // protected function schedule(Schedule $schedule)
     // {
-        // $schedule->command('inspire')->hourly();
-        // $schedule->command('arduino:update-status')->everyMinute();
-        // $schedule->call(function () {
-            // Perform the route check here
-            // $response = Http::post('http://192.168.239.43');
-            // Process the response or perform any desired actions
-            // if ($response->successful()) {
-            // Route is accessible
-            // Perform necessary actions
-            // } else {
-            // $data = Mesin::where('id', 1)->first();
-            // $data->aktif = 0;
-            // $data->update();
-            // }
-        // })->everyMinute();
+    //     $schedule->command('inspire')->hourly();
+    //     $schedule->command('arduino:update-status')->everyMinute();
+    //     $schedule->call(function () {
+    //         // Perform the route check here
+    //         $response = Http::post('http://192.168.239.43');
+    //         // Process the response or perform any desired actions
+    //         if ($response->successful()) {
+    //         // Route is accessible
+    //         // Perform necessary actions
+    //         } else {
+    //         $data = Mesin::where('id', 1)->first();
+    //         $data->aktif = 0;
+    //         $data->update();
+    //         }
+    //     })->everyMinute();
     // }
 
     /**
@@ -57,7 +57,7 @@ class Kernel extends ConsoleKernel
             $tomorrow = now()->addDay()->format('Y-m-d');
 
             // Panggil API MyQuran untuk mendapatkan jadwal sholat besok
-            $url = "https://api.myquran.com/v1/sholat/jadwal/1803/$today";
+            $url = "https://api.myquran.com/v2/sholat/jadwal/1803/$today";
             $response = Http::get($url);
             $jadwalSholatData = $response->json()['data']['jadwal'];
             // dd($jadwalSholatData);

@@ -66,7 +66,8 @@ class AbsenController extends Controller
         $data->kartu_id = $request->kartu_id;
         $data->nama = $siswa->nama;
         $data->tanggal = $today;
-        $data->kelas = "A";
+        $data->kelas = $siswa->kelas;
+        $data->kode = $siswa->kode;
         $data->no_mesin = $request->no_mesin;
         $data->jam_absen = Carbon::now()->format('H:i:m');
         $data->waktu_mulai = $waktuMulaiAbsen;

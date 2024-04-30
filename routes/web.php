@@ -54,7 +54,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.index');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    
+
+    Route::get('/file-import',[SiswaController::class,'importView'])->name('import-view');
+    Route::post('/import',[SiswaController::class,'importExcel'])->name('import-excel');
     
 });
 
@@ -64,7 +66,7 @@ Route::group(['prefix' => 'api', 'namespace' => 'Api'], function () {
     Route::get('/siswa', 'SiswaController@index')->name('api.siswa.index');
     Route::get('/siswa/{id}', 'SiswaController@get')->name('api.siswa.get');
     Route::get('/siswa/nis/{nis}', 'SiswaController@getByNis')->name('api.siswa.getByNis');
-    Route::post('/siswa', 'SiswaController@store')->name('api.siswa.store');
+    Route::post('/tambahsiswa', 'SiswaController@store')->name('api.siswa.store');
     Route::post('/siswa/{id}', 'SiswaController@update')->name('api.siswa.update');
     Route::delete('/siswa/{id}', 'SiswaController@destroy')->name('api.siswa.destroy');
 

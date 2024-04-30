@@ -66,7 +66,7 @@ class SiswaController extends Controller
             "kelas" => "required",
             "kode" => "required",
             "kartu" => "required",
-            'foto' => 'required|mimes:jpg,jpeg,png|max:2048',
+            'foto' => 'mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -90,7 +90,11 @@ class SiswaController extends Controller
             $fileName = time() . '.' . $file->extension();
             Storage::putFileAs('foto', $file, $fileName);
         } else {
-            $fileName = 'person.png';
+            // $fileName = public_path('images/3.png');
+            // Storage::putFileAs('foto', $file, $fileName);
+            $defaultPhoto = public_path('images/3.png');
+            $fileName = basename($defaultPhoto);
+            Storage::put('foto/' . $fileName, file_get_contents($defaultPhoto));
         }
 
         $data = new Siswa();

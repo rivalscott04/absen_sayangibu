@@ -68,7 +68,15 @@
                         <td>{{$i->waktu_selesai}}</td>
                         <td>{{$i->jam_absen}}</td>
                         <td>{{$i->no_mesin}}</td>
-                        <td>{{$i->status}}</td>
+                        <td>
+                          @if ($i->status == 1)
+                            <span class="badge blue">Tepat Waktu</span>
+                          @elseif ($i->status == 2)
+                            <span class="badge yellow">Terlambat</span>
+                          @else
+                            <span class="badge red">Tidak Hadir</span>
+                          @endif
+                        </td>
                       </tr>
                   @endforeach
                 </tbody>

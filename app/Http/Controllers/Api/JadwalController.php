@@ -28,7 +28,7 @@ class JadwalController extends Controller
             // $tomorrow = now()->addDay()->format('Y/m/d');
 
             // Panggil API MyQuran untuk mendapatkan jadwal sholat besok
-            $url = "https://api.myquran.com/v1/sholat/jadwal/1803/$today";
+            $url = "https://api.myquran.com/v2/sholat/jadwal/1803/$today";
             $response = Http::get($url);
             $jadwalSholatData = $response->json();
             dd($jadwalSholatData);
@@ -64,7 +64,7 @@ class JadwalController extends Controller
                         'waktu_selesai' => $waktuSelesai,
                         'status' => $status
                     ]    
-                    );
+                );
             }
 
             $this->updateStatus();

@@ -5,41 +5,87 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 //tambah data
-$('#form-tambah-data').on('submit', function(e){
-  e.preventDefault();
-  // var actionUrl = $(this).attr('action');
-  let actionUrl = 'api/siswa/';
-  let formData = new FormData(this);
-  console.log('form', formData);
+// $('#form-tambah-data').on('submit', function(e){
+//   e.preventDefault();
+//   // var actionUrl = $(this).attr('action');
+//   let actionUrl = 'api/tambahsiswa/';
+//   let formData = new FormData(this);
+//   console.log('form', formData);
 
-  $.ajax({
-    url: actionUrl,
-    type: 'POST',
-    data: formData,
-    contentType: false,
-    processData: false,
-    success: function(res){
+//   $.ajax({
+//     url: actionUrl,
+//     type: 'POST',
+//     data: formData,
+//     contentType: false,
+//     processData: false,
+//     success: function(res){
+//       Swal.fire({
+//         icon: 'success',
+//         title: 'Data berhasil ditambahkan',
+//         text:'Data siswa telah ditambahkan',
+//         confirmButtonText: 'OK'
+//       }).then((result) => {
+//         if(result.isConfirmed){
+//           location.reload();
+//         }
+//       });
+//     },
+//     error: function(xhr, status, error){
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'Data tidak berhasil ditambahkan',
+//         text:'Data siswa tidak ditambahkan',
+//         confirmButtonText: 'OK'
+//       })
+//     }
+//   });
+// });
+
+$('#form-tambah-data').on('submit', async function(e){
+  e.preventDefault();
+  let actionUrl = 'api/tambahsiswa/';
+  let formData = new FormData(this);
+
+  try {
+    const response = await fetch(actionUrl, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      const res = await response.json();
       Swal.fire({
         icon: 'success',
         title: 'Data berhasil ditambahkan',
-        text:'Data siswa telah ditambahkan',
+        text: res.message, // Asumsi server mengirimkan pesan sukses
         confirmButtonText: 'OK'
       }).then((result) => {
         if(result.isConfirmed){
           location.reload();
         }
       });
-    },
-    error: function(xhr, status, error){
+    } else {
+      // Handle HTTP status code secara spesifik (misal: 400, 500, dll)
+      const error = await response.json();
       Swal.fire({
         icon: 'error',
         title: 'Data tidak berhasil ditambahkan',
-        text:'Data siswa tidak ditambahkan',
+        text: error.message, // Asumsi server mengirimkan pesan error
         confirmButtonText: 'OK'
-      })
+      });
     }
-  });
+  } catch (error) {
+    console.error('Error:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Terjadi Kesalahan',
+      text: 'Tidak dapat menghubungi server',
+      confirmButtonText: 'OK'
+    });
+  }
 });
+
+
 var idEdit
 $(document).on('click', '.edit-link', function(e){
   e.preventDefault();

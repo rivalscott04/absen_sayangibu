@@ -42,13 +42,31 @@
             <a class= "waves-effect waves-light btn gradient-45deg-light-blue-cyan modal-trigger" href="#tambah-data">
               <i class="material-icons left">add_box</i> Tambah
             </a>
+            <a class= "waves-effect waves-light btn gradient-45deg-purple-deep-purple modal-trigger" href="#import-siswa">
+              <i class="material-icons left">file_download</i> Import
+            </a>
           </span>
 
+          <!-- import siswa -->
+          <div id="import-siswa" class="modal">
+            <div class="modal-content">
+              <h4>Import Siswa</h4>
+              <form action="{{ route('import-excel') }}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  <div class="form-group mb-4">
+                      <div class="custom-file text-left">
+                          <input type="file" name="file" class="custom-file-input" id="customFile">
+                          <label class="custom-file-label" for="customFile">Choose file</label>
+                      </div>
+                  </div>
+                  <button class="btn btn-primary">Import Users</button>
+              </form>
+            </div>
+          </div>
           <!-- tambah data -->
           <div id="tambah-data" class="modal">
             <div class="modal-content">
               <h4>Tambah Siswa</h4>
-              {{-- <form id="form-tambah-data" method="POST" action="{{route('api.siswa.store')}}" enctype="multipart/form-data"> --}}
               <form id="form-tambah-data" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -82,13 +100,12 @@
                     <label for="kartu">Kartu</label>
                   </div>
                   <div class="col m6 s12 file-field input-field">
-                    <div class="btn float-right">
-                      <i class="material-icons left">add_a_photo</i>
+                    <div class="btn">
                       <span>Photo</span>
-                      <input type="file" name="foto">
+                      <input type="file" name="foto" id="foto">
                     </div>
                     <div class="file-path-wrapper">
-                      <input class="file-path validate" type="text">
+                      <input class="file-path validate" type="text" placeholder="Upload a photo">
                     </div>
                   </div>
                 </div>
@@ -230,10 +247,10 @@
                         <td>{{$i->kode}}</td>
                         <td>{{$i->kartu}}</td>
                         <td>
-                          <a href="#" class="btn orange darken-3 mr-1 edit-link" data-id="{{$i->id}}"><i class="material-icons left">edit</i>Edit</a>
+                          <a href="#" class="btn orange darken-3 mr-1 edit-link" data-id="{{$i->id}}"><i class="material-icons">edit</i></a>
                           <!-- <a href="{{url('siswa').'/'.$i->id}}" class="btn btn-primary orange darken-3 btn-action mr-1" data-toggle="tooltip" title="detail"><i class="material-icons left">edit</i>Edit</a> -->
-                          {{-- <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?| Data ini akan terhapus. Lanjutkan ?" data-confirm-yes="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i>Hapus</a> --}}
-                          <a class="btn btn-danger btn-action" data-toggle="tooltip" onclick="hapus({{$i->id}})" title="Delete"><i class="material-icons left">delete_forever</i>Hapus</a>
+                          {{-- <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete" data-confirm="Apakah anda yakin?| Data ini akan terhapus. Lanjutkan ?" data-confirm-yes="hapus({{ $i->id }})"><i class="material-icons left">delete_forever</i></a> --}}
+                          <a class="btn btn-danger btn-action" data-toggle="tooltip" onclick="hapus({{$i->id}})" title="Delete"><i class="material-icons">delete_forever</i></a>
                         </td>
                       </tr>
                   @endforeach
