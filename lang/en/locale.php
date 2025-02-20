@@ -136,6 +136,7 @@ return [
     "Attendance"=> "Attendance",
     "Siswa"=> "Siswa",
     "Kehadiran"=>"Kehadiran",
+    "Rekap" => "Rekap",
     "Mesin" => "Mesin",
     "Jadwal" => "Jadwal"
 ];

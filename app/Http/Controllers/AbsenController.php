@@ -14,4 +14,10 @@ class AbsenController extends Controller
 
         return view('pages.attendance.kehadiran', compact('data'));
     }
+
+    public function store ($id){
+        $data = 
+
+    }
+
 }

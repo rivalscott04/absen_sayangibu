@@ -26,6 +26,12 @@
           "name": "Kehadiran",
           "i18n": "Kehadiran",
           "slug": ""
+        },
+        {
+          "url": "rekap",
+          "name": "Rekap",
+          "i18n": "Rekap",
+          "slug": ""
         }
       ]
     },

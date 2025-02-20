@@ -8,6 +8,7 @@ use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\MesinController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\RekapController;
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -36,6 +37,8 @@ Route::get('lang/{locale}', [LanguageController::class, 'swap']);
 
 // Auth::routes(['verify' => true]);
 
+Route::get('/rekap',[RekapController::class, 'index'])->name('rekap.index');
+Route::get('/export',[RekapController::class, 'export'])->name('rekap.export');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [PageController::class, 'dashboardModern']);
     //siswa
@@ -44,6 +47,8 @@ Route::group(['middleware' => 'auth'], function(){
     
     //kehadiran
     Route::get('/kehadiran', [AbsenController::class, 'index'])->name('absen.index');
+
+    //rekap
     
     //mesin
     Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
